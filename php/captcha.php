@@ -23,7 +23,7 @@ $_SESSION["captcha"] = $captcha;
 //Fonction permettant de lister tous les fichiers
 //se trouvant dans le dossier fonts et ayant
 //l'extension .ttf
-$listOfFonts = glob("fonts/*.ttf");
+$listOfFonts = glob("../ressources/fonts/*.ttf");
 shuffle($listOfFonts);
 $font = $listOfFonts[0];
 $angle = rand(-20, 20);
