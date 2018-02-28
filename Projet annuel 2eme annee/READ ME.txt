@@ -1,5 +1,0 @@
-STATUS : Alpha Version 
-*You'll need to select only the important things in the bootstrap folder before putting the files online. 
-*You have to put all the css actions in style.css, there are a lot of margins done in others pages
-*You 'll need to link your pages with the header, footer and the "accueil" pages.
-!!!!!!! *NEED TO REMOVE ABSOLUTE POSITIONS, IT COULD DESTROY THE REPONSIVE ABILITY  !!!!!!!
