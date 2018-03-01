@@ -17,12 +17,7 @@ $length = rand(4,6);
 $captcha = substr($charAuthorized, 0, $length);
 $_SESSION["captcha"] = $captcha;
 
-//Insérer le texte dans l'image
-//imagestring($image, 5, 80, 25, $captcha, $color);
-
-//Fonction permettant de lister tous les fichiers
-//se trouvant dans le dossier fonts et ayant
-//l'extension .ttf
+// Text
 $listOfFonts = glob("../ressources/fonts/*.ttf");
 shuffle($listOfFonts);
 $font = $listOfFonts[0];
