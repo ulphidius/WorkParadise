@@ -11,11 +11,11 @@
 		}
 
 		public function __destruct(){
-			$this->_firstname;
-			$this->_lastname;
-			$this->_email;
-			$this->_pwd;
-			$this->_id;
+			unset($this->_firstname);
+			unset($this->_lastname);
+			unset($this->_email);
+			unset($this->_pwd);
+			unset($this->_id);
 		}
 
 		// Getter

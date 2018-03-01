@@ -1,4 +1,6 @@
 <?php
+	required "User.php";
+	
 	class UserManager{
 		private $_db;
 
@@ -36,8 +38,9 @@
 		}
 
 		public function getUser($id){
-			$id = (int) $id;
-			$connect = $this->_db->query('SELECT id, prenom, nom, email, pwd FROM USERS WHERE id ='.$id);
+			$id = (int)$id;
+			$connect = $this->_db->prepare('SELECT id, prenom, nom, email, pwd FROM USERS WHERE id = :id');
+			$connect->execute("id"=>$_POST["id"]);
 			$data = $connect->fetch(PDO::FETCH_ASSOC);
 
 			return new User($data);
@@ -73,7 +76,7 @@
 			$connect->bindValue(':prenom', $user->prenom(), PDO::PARAM_STR);
 			$connect->bindValue(':nom', $user->nom(), PDO::PARAM_STR);
 			$connect->bindValue(':email', $user->email(), PDO::PARAM_STR);
-			$connect->bindValue(':pwd', $user->pwd(), PDO::PARAM_STR);
+			$connect->bindValue(':pwd', $pwd, PDO::PARAM_STR);
 
 			$connect->execute();
 

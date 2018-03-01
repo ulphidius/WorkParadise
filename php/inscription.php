@@ -1,7 +1,8 @@
 <?php
 	session_start();
-
+	
 	required "conf.php";
+	required "UserManager.php";
 
 	if(count($_POST) == 7
 		&& !empty($_POST["lastname"])
@@ -43,9 +44,22 @@
 			$error = true;
 			$listOfErrors[] = 5;
 		}
-
-		if(){
-			
+		/*
+		$user = new User([$_POST["email"], $_POST["pwd"], $_POST["firstname"], $_POST["lastname"]]);
+		$db = new ConnectDB([]);
+		$db->connectToDB();
+		$userManager = new UserManager($db);
+		if($userManager->checkEmail($user->email) == false){
+			$error = true;
+			listOfError[] = 7;
+		}
+		*/
+		if($error){
+			$_SESSION["errors_form"] = $listOfErrors;
+			$_SESSION["data_form"] = $_POST;
+			header("Location: inscriptionForm.php");
+		}else{
+			$userManager->
 		}
 
 	}else{
