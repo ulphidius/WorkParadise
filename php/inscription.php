@@ -1,8 +1,12 @@
 <?php
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	
 	session_start();
 	
-	required "conf.php";
-	required "UserManager.php";
+	require "conf.php";
+	require "UserManager.php";
+	require "ConnectDB.php";
 
 	if(count($_POST) == 7
 		&& !empty($_POST["lastname"])
@@ -22,44 +26,54 @@
 
 		if(strlen($_POST["lastname"]) < 2 || strlen($_POST["lastname"]) > 50){
 			$error = true;
-			listOfError[] = 1;
+			$listOfError[] = $listOfErrors[1];
 		}
 
 		if(strlen($_POST["firstname"]) < 2 || strlen($_POST["firstname"]) > 50){
 			$error = true;
-			listOfError[] = 2;
+			$listOfError[] = $listOfErrors[2];
 		}
 
-		if(strlen($_POST["pwd"]) < 8 || strlen($_pwd["pwd"]) > 64){
+		if(strlen($_POST["pwd"]) < 8 || strlen($_POST["pwd"]) > 64){
 			$error = true;
-			listOfError[] = 3;
+			$listOfError[] = $listOfErrors[3];
 		}
 
-		if($_POST["pwd"] != $_POST["pwd2"]{
+		if($_POST["pwd"] != $_POST["pwd2"]){
 			$error = true;
-			listOfError[] = 4;
+			$listOfError[] = $listOfErrors[4];
 		}
 
 		if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 			$error = true;
-			$listOfErrors[] = 5;
+			$listOfError[] = $listOfErrors[5];
 		}
-		/*
-		$user = new User([$_POST["email"], $_POST["pwd"], $_POST["firstname"], $_POST["lastname"]]);
-		$db = new ConnectDB([]);
-		$db->connectToDB();
-		$userManager = new UserManager($db);
-		if($userManager->checkEmail($user->email) == false){
+		if($_POST["captcha"] != $_SESSION["captcha"]){
 			$error = true;
-			listOfError[] = 7;
+			$listOfError[] = $listOfErrors[6];
 		}
-		*/
+
+		$user = new User([
+						'email' => $_POST["email"], 
+						'pwd' => $_POST["pwd"], 
+						'firstname' => $_POST["firstname"], 
+						'lastname' => $_POST["lastname"]
+						]);
+
+		$db = new ConnectDB($dbConnection);
+
+		$db = $db->connectToDB();
+		$userManager = new UserManager($db);
+		if($userManager->checkEmail($user->getEmail()) != false){
+			$error = true;
+			$listOfError[] = $listOfErrors[7];
+		}
 		if($error){
-			$_SESSION["errors_form"] = $listOfErrors;
+			$_SESSION["errors_form"] = $listOfError;
 			$_SESSION["data_form"] = $_POST;
-			header("Location: inscriptionForm.php");
+			echo json_encode($listOfError);
 		}else{
-			$userManager->
+			$userManager->addUser($user);
 		}
 
 	}else{

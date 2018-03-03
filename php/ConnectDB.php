@@ -7,7 +7,7 @@
 		private $_pwd;
 
 		public function __construct(array $data){
-			hydrate($data);
+			$this->hydrate($data);
 		}
 
 		// Getter
@@ -52,25 +52,26 @@
 			$this->_pwd = $pwdE;
 		}
 
-		public function hydrate(array $data{
+		public function hydrate(array $data){
 			foreach ($data as $key => $value) {
 				$method = 'set'.ucfirst($key);
+				if(method_exists($this, $method)){
+					$this->$method($value);
+				}
 			}
 
-			if(method_exists($this, $method)){
-				$this->$method($value);
-			}
 		}
 
 		// Les méthodes
 		public function connectToDB(){
 			try{
-				$db = new PDO('mysql:host='.$this->_hostName.';dbname='.$this->_dbname.';charset='.$this->_charset.'', $this->_userName, $this->_pwd);
+				$db = new PDO('mysql:host='.$this->_hostName.';dbname='.$this->_dbName.';charset='.$this->_charset.'', $this->_userName, $this->_pwd);
 
 			}catch(Exception $e){
-				die('Erreur : ' . e->getMessage());
+				die('Erreur : ' . $e->getMessage());
 			
 			}
+			return $db;
 		}
 
 		// Retour affichage

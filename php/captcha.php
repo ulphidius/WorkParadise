@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 header("Content-type: image/png"); 
 
 $image = imagecreate(200, 60);
@@ -15,6 +16,7 @@ $charAuthorized = str_shuffle($charAuthorized);
 $length = rand(4,6);
 //Couper la chaine de 0 à cette valeur aléatoire
 $captcha = substr($charAuthorized, 0, $length);
+
 $_SESSION["captcha"] = $captcha;
 
 // Text
@@ -23,7 +25,7 @@ shuffle($listOfFonts);
 $font = $listOfFonts[0];
 $angle = rand(-20, 20);
 
-imagettftext($image, 20, $angle, 80, 35, $color, $font, $captcha);
+imagettftext($image, 30, $angle, 80, 35, $color, $font, $captcha);
 
 
 for($i=0; $i<2; $i++){

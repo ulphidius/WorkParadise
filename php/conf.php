@@ -9,3 +9,10 @@ $listOfErrors = [
 					6=>"Le captcha n'est pas valide",
 					7=>"L'email existe déjà"
 				];
+
+$dbConnection = ['hostname' => 'localhost',
+							'dbname' => 'WORKPARADISE',
+							'charset' => 'utf8',
+							'userName' => 'root',
+							'pwd' => 'louis1997'
+							];

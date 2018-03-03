@@ -3,11 +3,11 @@
 		private $_firstname;
 		private $_lastname;
 		private $_email;
-		private $_pwd
+		private $_pwd;
 		private $_id;
 
 		public function __construct(array $data){
-			hydrate($data);
+			$this->hydrate($data);
 		}
 
 		public function __destruct(){
@@ -69,14 +69,14 @@
 			echo 'L\'attribut invalide est : '.$name.' et la valeur est : '.$value;			
 		}
 
-		public function hydrate(array $data{
+		public function hydrate(array $data){
 			foreach ($data as $key => $value) {
 				$method = 'set'.ucfirst($key);
+				if(method_exists($this, $method)){
+					$this->$method($value);
+				}
 			}
 
-			if(method_exists($this, $method)){
-				$this->$method($value);
-			}
 		}
 
 		public function __toString(){
