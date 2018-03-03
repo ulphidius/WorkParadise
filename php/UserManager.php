@@ -38,7 +38,7 @@
 
 		public function deleteUser(User $user){
 			$connect = $this->_db->prepare('DELETE FROM USERS WHERE id = :id');
-			$connect->execute([":id"=>$user->getId());
+			$connect->execute([":id"=>$user->getId()]);
 		}
 
 		public function getUser($id){
@@ -69,6 +69,27 @@
 				return false;
 			} 
 			return true;
+		}
+		
+		public function checkPwd($email, $pwd){
+			$connect = $this->_db->prepare('SELECT pwd FROM USERS WHERE email = :email');
+			$connect->execute([":email" => $email]);
+			$result = $connect->fetch();
+
+			if($result && password_verify($pwd, $result["pwd"])){
+				return true;			
+			}else{
+				return false;			
+			}
+			
+		}
+		
+		public function loadId($email){
+			$connect = $this->_db->prepare('SELECT id FROM USERS WHERE email = :email');
+			$connect->execute([":email" => $email]);
+			$id = $connect->fetch();
+			
+			return $id;
 		}
 
 		public function updateUser(User $user){

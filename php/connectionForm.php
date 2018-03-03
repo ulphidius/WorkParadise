@@ -44,7 +44,7 @@
 						<input type="submit" value="Mot de passe oublié" class="form-control">
 					</div>
 				</form>
-				<script src="../js/inscription.js"></script>
+				<script src="../js/connection.js"></script>
 			</section>
 			<footer class="page-footer">
 				<button> Facebook </button>
