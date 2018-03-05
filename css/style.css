@@ -1,3 +1,12 @@
+table
+{
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+}
+
 .title1{
 color: white; 
 margin-top: 20px;
@@ -46,6 +55,27 @@ text-align: center;
 
 }
 
+/* //style louis 
+.page-header{
+	background-color: #66B2FF;
+	position : fixed;
+	width: 100%;
+	z-index: 1;
+	margin-top: 0;
+	top : 0;
+}
+
+.page-footer{
+	background-color: #66B2FF;
+	margin-top: 20%;
+	min-height: 200px;
+
+}
+
+#main{
+	margin-top: 250px;
+}
+*/
 
 
 

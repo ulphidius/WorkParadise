@@ -6154,6 +6154,10 @@ button.bg-dark:focus {
   background-color: #1d2124 !important;
 }
 
+.colorNav {
+  background-color: #66B2FF !important;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
