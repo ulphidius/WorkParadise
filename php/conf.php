@@ -14,5 +14,5 @@ $dbConnection = ['hostname' => 'localhost',
 							'dbname' => 'WORKPARADISE',
 							'charset' => 'utf8',
 							'userName' => 'root',
-							'pwd' => 'louis1997'
+							'pwd' => ''
 							];
