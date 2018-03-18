@@ -6,92 +6,98 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Inscription</title>
-		<link href="../asset/css/bootstrap.css" rel="stylesheet">
+		<link href="../asset/css/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="../css/inscription.css">
 	  	<script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
 	</head>
 	<body>
 		<header class="page-header">
-			<img src="../ressources/logoProjet.png">
+			<div class="row align-items-center">
+				<div class="col-md-2">
+					<img src="../ressources/logoProjet.png">
+				</div>
+				<div class="offset-md-1 col-md-1 text-center">
+					<button class="btn btn-primary">test1</button>
+				</div>
+				
+				<div class="col-md-1 text-center">
+					<button class="btn btn-primary">test2</button>
+				</div>
+				
+				<div class="col-md-1 text-center">
+					<button class="btn btn-primary">test3</button>
+				</div>
+				
+				<div class="col-md-1 text-center">
+					<button class="btn btn-primary">test4</button>
+				</div>
+			</div>
 		</header>
 			<section class="container-fluid" id="main">
 				<ul id="listOfError">
 				</ul>
 				<form class="form-horizontal col-md-8" id="form_">
-					<aside class="col-md-3"></aside>
-					<div class="row">
-						<div class="form-group">
-							<label for="1" class="col-md-2"> Nom : </label>
-							<div class="col-md-6">
+						<div class="form-group row">
+							<label for="1" class="offset-md-3 col-md-2"> Nom : </label>
+							<div class="col-md-7">
 								<input id="1" type="text" name="lastname" placeholder="Entrée votre nom" class="form-control">
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<label for="2" class="col-md-2"> Prénom : </label>
-							<div class="col-md-6">
+						<div class="form-group row">
+							<label for="2" class="offset-md-3 col-md-2 col-form-label"> Prénom : </label>
+							<div class="col-md-7">
 								<input id="2" type="text" name="firstname" placeholder="Entrée votre prénom" class="form-control">
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<label for="3" class="col-md-2"> Email : </label>
-							<div class="col-md-6">
+						<div class="form-group row">
+							<label for="3" class="offset-md-3 col-md-2 col-form-label"> Email : </label>
+							<div class="col-md-7">
 								<input id="3" type="email" name="email" placeholder="Entrée votre email" class="form-control">
 							</div>
 						</div>
-					</div>
-
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<label for="4" class="col-md-2"> Mot de passe : </label>
-							<div class="col-md-6">
+						<div class="form-group row">
+							<label for="4" class="offset-md-3 col-md-2 col-form-label"> Mot de passe : </label>
+							<div class="col-md-7">
 								<input id="4" type="password" name="pwd" placeholder="Entrée votre mot de passe" class="form-control">
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<label for="5" class="col-md-2"> Entrée de nouveau votre mot de passe : </label>
-							<div class="col-md-6">
+						<div class="form-group row">
+							<label for="5" class="offset-md-3 col-md-2 col-form-label"> Entrée de nouveau votre mot de passe : </label>
+							<div class="col-md-7">
 								<input id="5" type="password" name="pwd2" class="form-control">
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<label for="6" class="col-md-2"> J'accepte les CGUs</label>
+						<div class="form-group row">
+							<label for="6" class="offset-md-3 col-md-2 col-form-label"> J'accepte les CGUs</label>
 							<div>
 								<input id="6" type="checkbox" name="legacy" class="form-control">
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<aside class="col-md-3"></aside>
-						<div class="form-group">
-							<img class="col-md-2" src="captcha.php">
-							<div class="col-md-6">
+						<div class="form-group row">
+							<img class="offset-md-3 col-md-2" src="captcha.php">
+							<div class="col-md-7">
 								<input id="7" type="text" name="captcha" placeholder="Saisissez les caractères" class="form-control">
 							</div>
 						</div>
-					</div>
-					<div class="col-md-offset-7 col-md-2">
+					<div class="offset-md-7 col-md-2">
 						<input type="submit" value="Envoyer" class="form-control">
 					</div>
 				</form>
 				<script src="../js/inscription.js"></script>
 			</section>
 			<footer class="page-footer">
-				<button> Facebook </button>
+					<div class="row align-items-end" id="network">
+						<div class="offset-md-9 col-md-1">
+						 	<a href="https://facebook.com"><img src="../ressources/facebook.png" width="100" height="100" /></a> 
+						</div>
+						<div class="col-md-1">
+						 	<a href="https://twitter.com"><img src="../ressources/twitter.jpeg" width="100" height="100" /></a> 
+						</div>
+						<div class="col-md-1">
+						   	<a href="https://instagram.com"><img src="../ressources/instagram.png" width="100" height="100" /></a> 
+				   		</div>
+				   </div>
 			</footer>
 		</body>
 </html>

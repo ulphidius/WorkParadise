@@ -14,6 +14,7 @@
 		&& !empty($_POST["pwd"])){
 
 		$error = false;
+		$listOfError = [];
 
 		$db = new ConnectDB($dbConnection);
 		$db = $db->connectToDB();
@@ -21,18 +22,23 @@
 		
 		if($userManager->checkPwd($_POST["email"], $_POST["pwd"]) == false){
 			$error = true;
+			$listOfError[] = $listOfErrors[8];
+		
+		}else if($userManager->checkValidation() == false){
+			$error = true;
+			$listOfError[] = $listOfErrors[9];
+
 		}
 
 		if($error == true){
-			echo "false";
+			$_SESSION["errors_form"] = $listOfError;
+			$_SESSION["data_form"] = $_POST;
+			echo json_encode($listOfError);
 
 		}else{
-			echo "true";
 			$id = $userManager->loadId($_POST["email"]);
 			$_SESSION["connection"] = $id;
 			$_SESSION["timeout"] = time() + 900;
 		}
 
-	}else{
-		die("Erreur tentative, formulaire altérer ou erreur interne !");
 	}

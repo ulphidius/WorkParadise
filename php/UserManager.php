@@ -92,6 +92,18 @@
 			return $id;
 		}
 
+		public function checkValidation($email){
+			$connect = $this->_db->prepare('SELECT validation FROM USERS WHERE email = :email');
+			$connect->execute([":email" => $email]);
+			$validation = $connect->fetch();
+
+			if($validation == 1){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
 		public function updateUser(User $user){
 			$connect = $this->_db->prepare('UPDATE USERS SET id = :id, prenom = :prenom, nom = :nom, email = :email, pwd = :pwd WHERE id = :id');
 			
