@@ -77,5 +77,8 @@
 		}
 
 	}else{
-		die("Erreur tentative, formulaire altérer ou erreur interne !");
+			$listOfError[] = $listOfErrors[42];
+			$_SESSION["errors_form"] = $listOfError;
+			$_SESSION["data_form"] = $_POST;
+			echo json_encode($listOfError);		
 	}

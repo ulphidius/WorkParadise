@@ -41,4 +41,9 @@
 			$_SESSION["timeout"] = time() + 900;
 		}
 
+	}else{
+			$listOfError[] = $listOfErrors[42];
+			$_SESSION["errors_form"] = $listOfError;
+			$_SESSION["data_form"] = $_POST;
+			echo json_encode($listOfError);		
 	}

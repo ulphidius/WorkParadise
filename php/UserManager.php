@@ -70,7 +70,27 @@
 			} 
 			return true;
 		}
-		
+
+		public function checkLastname($email, $name){
+			$connect = $this->_db->prepare('SELECT nom FROM USERS WHERE email = :email');
+			$connect->execute([":email"=> $email]);
+			$result = $connect->fetch();
+			if($result && $name == $result["nom"]){
+				return true;			
+			}
+			return false;
+		}
+
+		public function checkFirstname($email, $name){
+			$connect = $this->_db->prepare('SELECT prenom FROM USERS WHERE email = :email');
+			$connect->execute([":email"=> $email]);
+			$result = $connect->fetch();
+			if($result && $name == $result["prenom"]){
+				return true;			
+			}
+			return false;
+		}
+
 		public function checkPwd($email, $pwd){
 			$connect = $this->_db->prepare('SELECT pwd FROM USERS WHERE email = :email');
 			$connect->execute([":email" => $email]);
@@ -102,6 +122,14 @@
 			}else{
 				return false;
 			}
+		}
+
+		public function updatePwd($email, $password){
+			$connect = $this->_db->prepare('UPDATE USERS SET pwd = :pwd WHERE email = :email');
+			$connect->bindValue(':email', $email, PDO::PARAM_STR);
+			$connect->bindValue(':pwd', $password, PDO::PARAM_STR);
+
+			$connect->execute();
 		}
 
 		public function updateUser(User $user){

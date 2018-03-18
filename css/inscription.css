@@ -10,16 +10,15 @@
 .page-footer{
 	background-color: #66B2FF;
 	margin-top: 20%;
-	min-height: 200px;
+	width: 100%;
+	z-index: 1;
+	margin-bottom: 0;
+	bottom: 0;
 
 }
 
 #main{
 	margin-top: 250px;
-}
-
-#network{
-	height: 200px;
 }
 
 #header_button{
