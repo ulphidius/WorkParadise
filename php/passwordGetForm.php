@@ -45,15 +45,14 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="2" class="offset-md-3 col-md-2"> Nom : </label>
+							<select for="4" class="offset-md-3 col-md-2 col-form-label">
+								<option>Le nom de jeune fille de votre mère</option>
+								<option>Le nom  de votre ville de naissance</option>
+								<option>Le nom de votre animal de companie</option>
+								<option>Autre</option> 
+							</select>
 							<div class="col-md-7">
-								<input id="2" type="text" name="lastname" placeholder="Entrée votre nom" class="form-control">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="2" class="offset-md-3 col-md-2"> Prenom : </label>
-							<div class="col-md-7">
-								<input id="2" type="text" name="firstname" placeholder="Entrée votre prenom" class="form-control">
+								<input id="2" type="text" name="secret" placeholder="Entrez votre réponse" class="form-control">
 							</div>
 						</div>
 					</div>

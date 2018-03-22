@@ -23,12 +23,17 @@
 		}
 
 		public function addUser(User $user){
-			$connect = $this->_db->prepare('INSERT INTO USERS(prenom, nom, email, pwd) VALUES(:prenom, :nom, :email, :pwd)');
+			$connect = $this->_db->prepare('INSERT INTO Users(admin, firstname, lastname, phoneN, statut, email, pwd, subscription, secret) VALUES(:admin, :firstname, :lastname, :phoneN, :statut, :email, :pwd, :subscription, :secret)');
 
-			$connect->bindValue(':prenom', $user->getFirstname(), PDO::PARAM_STR);
-			$connect->bindValue(':nom', $user->getLastname(), PDO::PARAM_STR);			
+			$connect->bindValue(':firstname', $user->getFirstname(), PDO::PARAM_STR);
+			$connect->bindValue(':lastname', $user->getLastname(), PDO::PARAM_STR);			
 			$connect->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
-			
+			$connect->bindValue(':statut', $user->getStatut(), PDO::PARAM_BOOL);
+			$connect->bindValue(':admin', $user->getAdmin(), PDO::PARAM_BOOL);
+			$connect->bindValue(':phoneN', $user->getPhone(), PDO::PARAM_STR);
+			$connect->bindValue(':subscription', $user->getSubscription(), PDO::PARAM_STR);
+			$connect->bindValue(':secret', $user->getSecret(), PDO::PARAM_STR);
+
 			$pwd = password_hash($user->getPwd(), PASSWORD_DEFAULT);
 			$connect->bindValue(':pwd', $pwd, PDO::PARAM_STR);
 
@@ -37,22 +42,29 @@
 		}
 
 		public function deleteUser(User $user){
-			$connect = $this->_db->prepare('DELETE FROM USERS WHERE id = :id');
+			$connect = $this->_db->prepare('DELETE FROM Users WHERE id = :id');
 			$connect->execute([":id"=>$user->getId()]);
 		}
 
 		public function getUser($id){
 			$id = (int)$id;
-			$connect = $this->_db->prepare('SELECT id, prenom, nom, email, pwd FROM USERS WHERE id = :id');
+			$connect = $this->_db->prepare('SELECT admin, firstname, lastname, phoneN, statut, email, pwd, subscription, secret FROM Users WHERE id = :id');
 			$connect->execute([":id"=>$id]);
 			$data = $connect->fetch(PDO::FETCH_ASSOC);
 
 			return new User($data);
 		}
 
+		public function getPhone($id){
+			$id = (int)$id;
+			$connect = $this->_db->prepare('SELECT phoneN FROM Users WHERE id = :id');
+			$connect->execute([":id"=>$id]);
+			$data = $connect->fetch(PDO::FETCH_ASSOC);
+		}
+
 		public function getList(){
 			$users = [];
-			$connect = $this->_db-prepare('SELECT id, prenom, nom, email, pwd FROM USERS ORDER BY nom');
+			$connect = $this->_db->prepare('SELECT admin, firstname, lastname, phoneN, statut, email, pwd, subscription secret FROM Users ORDER BY lastname');
 			$connect->execute();
 			while($data = $connect->fetch(PDO::FETCH_ASSOC)){
 				$users[] = new User($data);
@@ -62,7 +74,7 @@
 		}
 
 		public function checkEmail($email){
-			$connect = $this->_db->prepare('SELECT email FROM USERS WHERE email = :email');
+			$connect = $this->_db->prepare('SELECT email FROM Users WHERE email = :email');
 			$connect->execute([":email"=> $email]);
 			$result = $connect->fetch();
 			if(empty($result)){
@@ -71,28 +83,38 @@
 			return true;
 		}
 
-		public function checkLastname($email, $name){
-			$connect = $this->_db->prepare('SELECT nom FROM USERS WHERE email = :email');
+		public function checkSecret($email, $secret){
+			$connect = $this->_db->prepare('SELECT secret FROM Users WHERE email = :email');
 			$connect->execute([":email"=> $email]);
 			$result = $connect->fetch();
-			if($result && $name == $result["nom"]){
+			if($result != $secret){
+				return false;
+			} 
+			return true;
+		}
+
+		public function checkLastname($email, $name){
+			$connect = $this->_db->prepare('SELECT lastname FROM Users WHERE email = :email');
+			$connect->execute([":email"=> $email]);
+			$result = $connect->fetch();
+			if($result && $name == $result["lastname"]){
 				return true;			
 			}
 			return false;
 		}
 
 		public function checkFirstname($email, $name){
-			$connect = $this->_db->prepare('SELECT prenom FROM USERS WHERE email = :email');
+			$connect = $this->_db->prepare('SELECT firstname FROM Users WHERE email = :email');
 			$connect->execute([":email"=> $email]);
 			$result = $connect->fetch();
-			if($result && $name == $result["prenom"]){
+			if($result && $name == $result["firstname"]){
 				return true;			
 			}
 			return false;
 		}
 
 		public function checkPwd($email, $pwd){
-			$connect = $this->_db->prepare('SELECT pwd FROM USERS WHERE email = :email');
+			$connect = $this->_db->prepare('SELECT pwd FROM Users WHERE email = :email');
 			$connect->execute([":email" => $email]);
 			$result = $connect->fetch();
 
@@ -105,7 +127,7 @@
 		}
 		
 		public function loadId($email){
-			$connect = $this->_db->prepare('SELECT id FROM USERS WHERE email = :email');
+			$connect = $this->_db->prepare('SELECT id FROM Users WHERE email = :email');
 			$connect->execute([":email" => $email]);
 			$id = $connect->fetch();
 			
@@ -113,7 +135,7 @@
 		}
 
 		public function checkValidation($email){
-			$connect = $this->_db->prepare('SELECT validation FROM USERS WHERE email = :email');
+			$connect = $this->_db->prepare('SELECT statut FROM Users WHERE email = :email');
 			$connect->execute([":email" => $email]);
 			$validation = $connect->fetch();
 
@@ -125,7 +147,7 @@
 		}
 
 		public function updatePwd($email, $password){
-			$connect = $this->_db->prepare('UPDATE USERS SET pwd = :pwd WHERE email = :email');
+			$connect = $this->_db->prepare('UPDATE Users SET pwd = :pwd WHERE email = :email');
 			$connect->bindValue(':email', $email, PDO::PARAM_STR);
 			$connect->bindValue(':pwd', $password, PDO::PARAM_STR);
 
@@ -133,15 +155,20 @@
 		}
 
 		public function updateUser(User $user){
-			$connect = $this->_db->prepare('UPDATE USERS SET id = :id, prenom = :prenom, nom = :nom, email = :email, pwd = :pwd WHERE id = :id');
+			$connect = $this->_db->prepare('UPDATE Users SET id = :id, lastname = :lastname, firstname = :firstname, email = :email, pwd = :pwd admin = :admin phoneN = :phone statut = :statut subscription = :subscription secret = :secret WHERE id = :id');
 			
 			$pwd = password_hash($user->getPwd(), PASSWORD_DEFAULT);
 			
 			$connect->bindValue(':id', $user->getId(), PDO::PARAM_INT);
-			$connect->bindValue(':prenom', $user->getFirstname(), PDO::PARAM_STR);
-			$connect->bindValue(':nom', $user->getLastname(), PDO::PARAM_STR);
+			$connect->bindValue(':firstname', $user->getFirstname(), PDO::PARAM_STR);
+			$connect->bindValue(':lastname', $user->getLastname(), PDO::PARAM_STR);
 			$connect->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
 			$connect->bindValue(':pwd', $pwd, PDO::PARAM_STR);
+			$connect->bindValue(':admin', $user->getAdmin(), PDO::PARAM_BOOL);
+			$connect->bindValue(':statut', $user->getStatut(), PDO::PARAM_BOOL);
+			$connect->bindValue(':phone', $user->getPhone(), PDO::PARAM_STR);
+			$connect->bindValue(':subscription', $user->getSubscription(), PDO::PARAM_STR);
+			$connect->bindValue(':secret', $user->getSubscription(), PDO::PARAM_STR);
 
 			$connect->execute();
 

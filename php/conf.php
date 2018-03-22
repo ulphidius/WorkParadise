@@ -10,7 +10,8 @@ $listOfErrors = [
 					7=>"L'email existe déjà",
 					8=>"L'email ou/et le mot de passe est/sont invalide/s",
 					9=>"Votre compte n'a pas était validé par un un administrateur veillez attendre",
-					10=>"Le nom et/ou le prenom et/ou l'email est/sont invalides",
+					10=>"L'email et/ou la réponse à la question secrète est incorrecte",
+					11=>"Le numero de téléphone est incorrecte entrer le sous ce format : 0612345678",
 					42=>"Vous avez tentez de valider sans avoir tout remplis ou avez envoyer un formulaire alterré"
 				];
 
@@ -20,3 +21,5 @@ $dbConnection = ['hostname' => 'localhost',
 							'userName' => 'test',
 							'pwd' => 'test'
 							];
+
+$phoneRegex = '/[^0[1-9]{1}((?.)[0-9]{2}){4}]/';

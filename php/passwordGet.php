@@ -11,8 +11,7 @@
 
 	if(count($_POST) == 3
 		&& !empty($_POST["email"])
-		&& !empty($_POST["firstname"])
-		&& !empty($_POST["lastname"])){
+		&& !empty($_POST["secret"])){
 
 		$error = false;
 		$listOfError = [];
@@ -25,14 +24,11 @@
 			$error = true;
 			$listOfError[] = $listOfErrors[10];
 		
-		}else if($userManager->checkLastname($_POST["email"], $_POST["lastname"]) == false){
+		}
+
+		if($userManager->checkSecret($_POST["email"], $_POST["secret"])){
 			$error = true;
 			$listOfError[] = $listOfErrors[10];
-
-		}else if($userManager->checkfirstname($_POST["email"], $_POST["firstname"]) == false){
-			$error = true;
-			$listOfError[] = $listOfErrors[10];
-
 		}
 
 		if($error == true){

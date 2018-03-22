@@ -4,7 +4,13 @@
 		private $_lastname;
 		private $_email;
 		private $_pwd;
+		private $_phone;
+		private $_admin;
+		private $_statut;
+		private $_subscription;
+		private $_secret;
 		private $_id;
+
 
 		public function __construct(array $data){
 			$this->hydrate($data);
@@ -35,6 +41,26 @@
 			return $this->_pwd;
 		}
 
+		public function getPhone(){
+			return $this->_phone;
+		}
+
+		public function getAdmin(){
+			return $this->_admin;
+		}
+
+		public function getStatut(){
+			return $this->_statut;
+		}
+
+		public function getSubscription(){
+			return $this->_subscription;
+		}
+
+		public function getSecret(){
+			return $this->_secret;
+		}
+
 		public function getId(){
 			return $this->id;
 		}
@@ -60,6 +86,26 @@
 			$this->_pwd = $pwd;
 		}
 
+		public function setPhone($phone){
+			$this->_phone = $phone;
+		}
+
+		public function setAdmin($admin){
+			$this->_admin = $admin;
+		}
+
+		public function setStatut($statut){
+			$this->_statut = $statut;
+		}
+
+		public function setSubscription($subscription){
+			$this->_subscription = $subscription;
+		}
+
+		public function setSecret($secret){
+			$this->_secret = $secret
+		}
+
 		public function setId($id){
 			$this->_id = $id;
 		}
@@ -80,7 +126,7 @@
 		}
 
 		public function __toString(){
-			return "Le prénom est : ".$this->_firstname." le nom est : ".$this->_lastname." l'email est : ".$this->_email." le mot de passe est : ".$this->_pwd." et l'id : ".$this->_id;
+			return "Le prénom est : ".$this->_firstname." le nom est : ".$this->_lastname." l'email est : ".$this->_email." le mot de passe est : ".$this->_pwd." le téléphone est : ".$this->_phone." est-il admin : ".$this->_admin." le statut : ".$this->_statut." la subscription :  ".$this->_subscription." et l'id : ".$this->_id;
 		}
 
 	}

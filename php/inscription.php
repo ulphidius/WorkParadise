@@ -8,14 +8,16 @@
 	require "UserManager.php";
 	require "ConnectDB.php";
 
-	if(count($_POST) == 7
+	if(count($_POST) == 9
 		&& !empty($_POST["lastname"])
 		&& !empty($_POST["firstname"])
 		&& !empty($_POST["pwd"])
 		&& !empty($_POST["pwd2"])
 		&& !empty($_POST["email"])
 		&& !empty($_POST["legacy"])
-		&& !empty($_POST["captcha"])){
+		&& !empty($_POST["captcha"])
+		&& !empty($_POST["phone"])
+		&& !empty($_POST["secret"])){
 		
 		$error = false;
 		$listOfError = [];
@@ -32,6 +34,11 @@
 		if(strlen($_POST["firstname"]) < 2 || strlen($_POST["firstname"]) > 50){
 			$error = true;
 			$listOfError[] = $listOfErrors[2];
+		}
+
+		if(!preg_match($phoneRegex, $_POST["phone"])){
+			$error = true;
+			$listOfError[] = $listOfErrors[11];
 		}
 
 		if(strlen($_POST["pwd"]) < 8 || strlen($_POST["pwd"]) > 64){
@@ -57,7 +64,13 @@
 						'email' => $_POST["email"], 
 						'pwd' => $_POST["pwd"], 
 						'firstname' => $_POST["firstname"], 
-						'lastname' => $_POST["lastname"]
+						'lastname' => $_POST["lastname"],
+						'secret' => $_POST["secret"],
+						'phone' => $_POST["phone"],
+						'statut' => false,
+						'subscription' => "",
+						'id' => 0,
+						'admin' => false
 						]);
 
 		$db = new ConnectDB($dbConnection);
@@ -74,6 +87,7 @@
 			echo json_encode($listOfError);
 		}else{
 			$userManager->addUser($user);
+			header("connectionForm.php");
 		}
 
 	}else{
