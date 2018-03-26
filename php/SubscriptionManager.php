@@ -1,6 +1,6 @@
 <?php
 	require "Subscription.php";
-	
+
 	class SubscriptionManager{
 		private $_db;
 
@@ -47,9 +47,15 @@
 			$connect->execute();
 		} 
 
-		public function addSubscription(){
-			
+		public function getSubscription($name){
+			$connect = $this->_db->prepare('SELECT id FROM Subscription WHERE name = :name');
+			$connect->execute([':name'=>$name]);
+
+			$data = $connect->fetchColumn();
+
+			return $data;
 		}
+
 
 		public function addSubscription(){
 			$connect = $this->_db->prepare('INSERT INTO Subscription (id, name, description, hourRate, studentRate, engagemementTime, engagemementRate, notEngagementRate, engagemementTime, dayRate) VALUES (:id, :name, :description, :hourRate, :studentRate, :engagemementTime, :engagemementRate, :notEngagementRate, :dayRate)');
