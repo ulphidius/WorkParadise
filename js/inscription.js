@@ -31,11 +31,14 @@ function errorForm(){
 
 function successForm(listError){
     if(listError && 0 !== listError.length){
+        console.log(listError);
         var error = JSON.parse(listError);
         var html = "";
-        $.each(error, function (index, value){html += "<li>" + value + "</li>"}); 
+        $.each(error, function (index, value){html += "<li>" + value + "</li>"});  
         $('#listOfError').html(html);
+    }else{
+        document.location.href="connectionForm.php";
     }
-}
 
+}
 $('#form_').on('submit', sendFormSub);

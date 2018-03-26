@@ -8,8 +8,10 @@
 	require "UserManager.php";
 	require "ConnectDB.php";
 	require "conf.php";
+	require_once "../asset/swiftmailer-master/vendor/autoload.php";
+	require_once "../asset/swiftmailer-master/lib/swift_required.php";
 
-	if(count($_POST) == 3
+	if(count($_POST) == 2
 		&& !empty($_POST["email"])
 		&& !empty($_POST["secret"])){
 
@@ -26,7 +28,7 @@
 		
 		}
 
-		if($userManager->checkSecret($_POST["email"], $_POST["secret"])){
+		if($userManager->checkSecret($_POST["email"], $_POST["secret"]) == false){
 			$error = true;
 			$listOfError[] = $listOfErrors[10];
 		}
@@ -37,45 +39,32 @@
 			echo json_encode($listOfError);
 
 		}else{
-
+			$name = $userManager->getName($_POST["email"]);
 			$password = uniqid();
-		     // Plusieurs destinataires
-		     $to  = $_POST["email"];
+			try{
+				$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, "ssl"))->setUsername($MAILNAME)->setPassword($MAILPASSWORD);
+				$mailer = (new Swift_Mailer($transport));
 
-		     // Sujet
-		     $subject = 'Mot de passe de récupération';
+			     // Plusieurs destinataires	
+			     $to  = $_POST["email"];
 
-		     // message
-		     $message = '
-		     <html>
-		      <head>
-		       <title>Voici le mot de passe de récupération</title>
-		      </head>
-		      <body>
-		      	<div>
-		      		<p>
-		      			Nous vous recommandons de changer au plus vite votre mot de passe depuis 
-		      		</p>
-		      		<p>
-		      			Voici votre mot de passe : <b>' . $password . '</b>
-		      		</p>
-		      	</div>
-		      </body>
-		     </html>
-		     ';
+			     // Sujet
+			     $subject = 'Mot de passe de récupération';
 
-		     // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-		     $headers  = 'MIME-Version: 1.0' . "\r\n";
-		     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			     // message
+			     $message = 'Voici le mot de passe de récupération
+Nous vous recommandons de changer au plus vite votre mot de passe depuis 
+Voici votre mot de passe : ' . $password . '
+			     ';
 
-		     // En-têtes additionnels
-		     $headers .= 'To: ' . $_POST["name"] . ' <' . $_POST["email"] . '>' . "\r\n";
-		     $headers .= 'From: WorkParadise <workparadise@gmail.com>' . "\r\n";
-		     // Envoi
-		     mail($to, $subject, $message, $headers);
-
+			     // Envoi
+			     $message = (new Swift_Message($subject))->setFrom(array("testworkparadise@gmail.com"))->setTo(array($to=>$name[0]." ".$name[1]))->setBody($message);
+			     $result = $mailer->send($message);
+			 }catch(Exception $e){
+			 	var_dump($e->getMessage(), $e->getTraceAsString()); 
+			 }
+			 $password = password_hash($password, PASSWORD_DEFAULT);
 		     $userManager->updatePwd($_POST["email"], $password);
-		     header("connectionForm.php");
 
 		}
 

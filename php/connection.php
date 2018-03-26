@@ -24,7 +24,7 @@
 			$error = true;
 			$listOfError[] = $listOfErrors[8];
 		
-		}else if($userManager->checkValidation() == false){
+		}else if($userManager->checkValidation($_POST["email"]) == false){
 			$error = true;
 			$listOfError[] = $listOfErrors[9];
 

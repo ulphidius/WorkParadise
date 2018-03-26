@@ -14,7 +14,10 @@ function successForm(listError){
         var html = "";
         $.each(error, function (index, value){html += "<li>" + value + "</li>"}); 
         $('#listOfError').html(html);
+    }else{
+        document.location.href="connectionForm.php";
     }
+
 }
 
 $('#form_').on('submit', sendFormConnect);

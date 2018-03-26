@@ -66,7 +66,7 @@
 						'firstname' => $_POST["firstname"], 
 						'lastname' => $_POST["lastname"],
 						'secret' => $_POST["secret"],
-						'phone' => $_POST["phone"],
+						'phoneN' => $_POST["phone"],
 						'statut' => false,
 						'subscription' => "",
 						'id' => 0,
@@ -87,7 +87,6 @@
 			echo json_encode($listOfError);
 		}else{
 			$userManager->addUser($user);
-			header("connectionForm.php");
 		}
 
 	}else{

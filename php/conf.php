@@ -22,4 +22,7 @@ $dbConnection = ['hostname' => 'localhost',
 							'pwd' => 'test'
 							];
 
-$phoneRegex = '/[^0[1-9]{1}((?.)[0-9]{2}){4}]/';
+$phoneRegex = '/^0[1-9](\.?\d{2}){4}/';
+
+$MAILNAME = "testworkparadise@gmail.com";
+$MAILPASSWORD = "workparadise";

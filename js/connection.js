@@ -12,8 +12,11 @@ function successForm(listError){
     if(listError && 0 !== listError.length){
         var error = JSON.parse(listError);
         var html = "";
+        console.log(error);
         $.each(error, function (index, value){html += "<li>" + value + "</li>"}); 
         $('#listOfError').html(html);
+    }else{
+        document.location.href="userForm.php";
     }
 }
 

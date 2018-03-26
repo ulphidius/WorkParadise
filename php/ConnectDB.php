@@ -66,6 +66,7 @@
 		public function connectToDB(){
 			try{
 				$db = new PDO('mysql:host='.$this->_hostName.';dbname='.$this->_dbName.';charset='.$this->_charset.'', $this->_userName, $this->_pwd);
+				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			}catch(Exception $e){
 				die('Erreur : ' . $e->getMessage());
