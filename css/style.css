@@ -33,10 +33,10 @@ text-align: center;
 
 
 .button_header{
-	width: 180px;
-	height: 90px;
+	width: 140px;
+	height: 40px;
 	background: #333333;
-	margin-top: 50px;
+	
 }
 
 .button_header:hover{
@@ -55,7 +55,6 @@ text-align: center;
 
 }
 
-/* //style louis 
 .page-header{
 	background-color: #66B2FF;
 	position : fixed;
@@ -75,7 +74,7 @@ text-align: center;
 #main{
 	margin-top: 250px;
 }
-*/
+
 
 
 

@@ -1,98 +1,192 @@
 <?php
   session_start();
-  //include "../html/head.html";
-  include "../html/head.html";
+  include "../html/index.html"; //header
 ?>
 
 
-	<body>
-		<div class="container">
-			<div class="row" style="margin-top: 30px;">
+	
+		<div class="container col-lg-10" id="main"> <!-- le contenu de la page -->
+			<div class="row">
 
 				
-				
+				<div class="col-lg-2"></div>
 
-				<div class="col-lg-5">
-					<img src="../img/funAtWork1.jpg" width="70%;" style="margin-left: 90px;">
+				<div class="col-lg-8">
+
+					<center><h1>Vous avez dit WORK AND SHARE ?</h1></center>
+
+					<p id="intro">
+					Work’n’Share c’est votre espace de coworking au coeur de la Suisse Romande à Lausanne Ouchy. Cet espace est dédié aux entrepreneurs, start ups, indépendants, salariés de tout horizon qui veulent travailler et recevoir leurs clients dans un cadre dynamique, convivial et professionnel.
+					</p>
 
 				</div>
 
 				
-
-				<div class="col-lg-6">
-					<p>Lorem ipsum dolor sit amet, consectetur adispisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-				</div>
-
-				<div class="col-lg-1">
+				<div class="col-lg-2">
 					
 				</div>
 
 			</div>
 
 
-			<div class="row" style="margin-top: 30px;margin-bottom: 30px;">
+			<div class="row">
 
-				<div class="col-lg-1">
+				<div class="col-lg-2"></div> <!-- espace -->
+				<div class="col-lg-8">
 					
-				</div>
-
-				<div class="col-lg-5">
-
-
+					
 					<br>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p> 
+					<p>_________________________________________________________________________________</p>
+					<div class="row"> <!-- une row pour chaque partie traitée -->
+						<div class="col-lg-4 col-sm-4 col-xs-3">
+							<img src="../img/community.png" width="50%">
+						</div>
+						<div class="col-lg-8 col-sm-8">
+							<p style="font-family: Ma Super Font">Work And Share c'est avant tout une communauté soudée toujours prête à vous aider ! De nombreux évènements sont organisés pour faire plus ample connaissance avec vos voisins coworkeurs !</p>
+						</div>
+					</div>
+
+
+
+					
+					<br><br>
+					<p>_________________________________________________________________________________</p>
+					<div class="row">
+						<div class="col-lg-4 col-sm-4 col-xs-3">
+							<img src="../img/refuge_icon.png" width="50%">
+						</div>
+						<div class="col-lg-8 col-sm-8">
+							<p style="font-family: Ma Super Font">Marre de travailler dans des endroits inconfortables au possible ? Work And Share est fait pour vous ! Vous pouvez paisiblement vous installer pour travailler, commander une boisson chaude ou un petit snack, c'est un vrai refuge pour tous les coworkeurs !</p>
+						</div>
+					</div>
+					
+					<br><br>
+					<p>_________________________________________________________________________________</p>
+					<div class="row">
+						<div class="col-lg-4 col-sm-4 col-xs-3">
+							<img src="../img/equipment.png" width="50%">
+						</div>
+						<div class="col-lg-8 col-sm-8">
+							<p style="font-family: Ma Super Font">Vous voulez travailler mais vous n'avez pas le matériel adéquat sur vous ? Ne vous inquiétez pas, Work And Share met à votre disposition tout le matériel nécessaire pour travailler confortablement ou encore organiser une réunion professionnelle.</p>
+						</div>
+					</div>
+					
+
+
+					<br> <br> <br>
+
+					<center><h2 id="presentDiapo">Voici quelques images de nos différents sites !</h2></center>
+
+					<div id="contain">
+						<img class="slides" src="../img/imgDiapo/siteBastille.jpg" >
+						<img class="slides" src="../img/imgDiapo/siteBeaubourg.jpg" >
+						<img class="slides" src="../img/imgDiapo/siteOdeon.jpg" >
+						<img class="slides" src="../img/imgDiapo/sitePlaceItalie.jpeg" >
+						<img class="slides" src="../img/imgDiapo/siteRepublique.jpg"  >
+						<img class="slides" src="../img/imgDiapo/siteTernes.jpg" >
+						<button class="bttn" onclick="plusIndex(-1)" id="bttn1">&#10094;</button>
+						<button class="bttn" onclick="plusIndex(1)"  id="bttn2">&#10095;</button>
+
+					</div>
+					<br> <br> <br>
+					<h2 id="presentDiapo">Ici icones des principaux services / matériels qu'on peut commander</h2>
+
 
 				</div>
+				<div class="col-lg-2"></div> <!-- espace -->
 
-				<div class="col-lg-5">
-
-					<img src="../img/iLikeToWork1.jpg" width="70%" style="margin-left: 90px;">
-
-				</div>
 			
 			</div>
 			
-			<div class="row" style="margin-top: 30px;margin-bottom: 30px;">
+			<div class="row">
 
 				
-				<div class="col-lg-5">
-
-					<img src="../img/hardToWork1.jpg" width="60%" style="margin-left: 90px;">
+				<div class="col-lg-6"> <!-- partie snacks -->
+					<br>
+					<img src="../img/snacks.png" width="15%" style="margin-left: 25%;">
+					<img src="../img/donut.png" width="15%" style="margin-left: 25%;">
+					<br><br>
+					<p>N'hésitez pas à commander divers snacks et boissons ! Nous avons un tarif préférentiel pour nos abonnés !</p>
 					
 				</div>
 
-				<div class="col-lg-6">
-
+				<div class="col-lg-6"> <!-- partie materiel -->
 					<br>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p> 
+					<img src="../img/hardware1.png" width="15%" style="margin-left: 25%;">
+					<img src="../img/micro.jpg" width="15%" style="margin-left: 25%;">
+					<br> <br> 
+					<p>Nous avons également beaucoup de matériel informatique, des vidéo-projecteurs, des enceintes stéréos, ... et bien d'autres outils pour rendre votre expérience work'n share encore plus intense !</p>
 
+					
 					
 
 				</div>
 
 				<br>
 
+			
+				</div>	
+				<h2>google map</h2>
+			<div class="row">
+
+				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1372.992239094133!2d6.6251511768868685!3d46.508417623524196!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c2fd00e4c4163%3A0x4971c3c4716c1c45!2sWork&#39;n&#39;Share!5e0!3m2!1sfr!2sfr!4v1520113797543" width="1640" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
 			</div>
 
-		</div>
-	</body>
-
+		
+		</div> <!-- fin du container-->
 	
+
+	</body>
+	
+
+	<script type="text/javascript"> /* script pour le slider d'images */
+		var index = 1;
+
+		function plusIndex(n){
+			index = index + n;
+			showImage(index);
+		}
+
+		showImage(1);
+
+		function showImage(n){
+			var i;
+			var x = document.getElementsByClassName("slides");
+			if(n > x.length){
+				index = 1;
+			}
+
+			if(n < 1){
+				index = x.length;
+			}
+
+			for(i=0; i<x.length; i++){
+				x[i].style.display = "none";
+				//alert(x.length);
+			}
+
+			x[index-1].style.display = "block";
+		}
+		autoSlide();
+
+		function autoSlide(){
+			var i;
+			var x = document.getElementsByClassName("slides");
+			for(i=0; i<x.length; i++){
+				x[i].style.display = "none";
+				//alert(x.length);
+			}
+			if(index > x.length){
+				index = 1;
+			}
+			x[index-1].style.display = "block";
+			index++;
+			setTimeout(autoSlide, 9000); // toutes les 9 secondes on change d'image
+		}
+	</script>
 <?php
 	include "footer.php"
 ?>
+

@@ -1,3 +1,123 @@
+/*fonts*/
+@font-face {
+	font-family: "Ma Super Fonte";
+	src: url('../fonts/Debock.ttf');
+}
+@font-face {
+	font-family: "Ma Superbe Fonte";
+	src: url('../fonts/Avenue du Vapoteur.ttf');
+}
+@font-face {
+	font-family: "Ma Super Font";
+	src: url('../fonts/adelitha.ttf');
+}
+
+@font-face {
+	font-family: "My font";
+	src: url('../fonts/Harson Demo.ttf');
+}
+
+@font-face {
+	font-family: "Mein font";
+	src: url('../fonts/Strange Tales.ttf');
+}
+
+@font-face {
+	font-family: "Meiner font";
+	src: url('../fonts/HandWork.ttf');
+}
+
+h1 {
+	font-family: "Meiner font";
+	font-size: 80px;
+	/*font-family: "Mein font";*/
+	/*font-family: "My font";*/
+
+	/*font-family: "Ma Superbe Fonte";*/
+	/*font-family: "Ma Super Font";*/
+	/*font-family: "Ma Super Fonte";*/
+
+}
+
+p {
+	font-family: "Ma Super Font";
+}
+
+table
+{
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+}
+
+#intro {
+	font-family: "Ma Super Font";
+	font-size: 20px;
+}
+
+.presentDate {
+	font-family: "Ma Super Fonte";
+	font-size: 20px;
+
+}
+
+#presentDiapo {
+	font-family: "Meiner font";
+	font-size: 70px;
+}
+
+.presentDiapo {
+	font-family: "Meiner font";
+	font-size: 50px;
+}
+
+#contain{
+	width: 80%;
+	height: 550px; /* origin = 450 */
+	border: 1px solid black;
+	margin: 0 auto;
+	position: relative;
+
+}
+
+#contain>img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+
+}
+
+#contain>.bttn{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-radius: 25px;
+	top: 200px;
+	background: black;
+	color: white;
+	font-size: 20px;
+}
+
+#contain>#bttn1:hover{
+	box-shadow: 10px 0px 20px 0px black;
+
+}
+
+#contain>#bttn2:hover{
+	box-shadow: -10px 0px 20px 0px black;
+
+}
+
+#contain>#bttn2{
+	position: relative;
+	float: right;
+}
+
+
+
 /* partie speciale test */
 .starter-template {
   padding: 3rem 1.5rem;
@@ -8,8 +128,9 @@
 	background-color: #66B2FF !important;
 }
 
+
 .navBlocks{
-	margin-left: 100px;
+	margin-left: 50px;
 }
 /* vrai partie */
 

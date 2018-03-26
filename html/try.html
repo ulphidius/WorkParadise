@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script language="javascript">
+var imagesTodisplay = new Array();
+imagesTodisplay[0] = "../img/contacts.png";// TOUJOURS COMMENCER PAR imagesTodisplay[0]
+imagesTodisplay[1] = "../img/contacts.png";
+imagesTodisplay[2] = "../img/contacts.png";
+imagesTodisplay[3] = "../img/contacts.png";
+// ET AINSI DE SUITE
+imageWidth = 500;
+imageHeight = 500;
+changeSpeed = 50; // CHANGE SPEED : MIN = 10, MAX = 300
+imageStay = 5;    // IMAGE STAYS AT 100% DURING x SECONDS
+diaporama = new Object();
+counter = 0;
+diaporama.initialize = function() {
+document.write("<img src='"+imagesTodisplay[0]+"' id='diapimage' style='width: "+imageWidth+"px; height: "+imageHeight+"px; filter: alpha(opacity=0); opacity: 0' />");
+diaporama.addOpacity();
+}
+diaporama.addOpacity = function() {
+document.getElementById('diapimage').filters.alpha.opacity+=changeSpeed/10;
+ 
+if(document.getElementById('diapimage').filters.alpha.opacity==100) {
+setTimeout("diaporama.decreaseOpacity()",imageStay*1000);
+} else {
+setTimeout("diaporama.addOpacity()",50);
+}
+}
+diaporama.decreaseOpacity = function() {
+document.getElementById('diapimage').filters.alpha.opacity-=changeSpeed/10;
+ 
+if(document.getElementById('diapimage').filters.alpha.opacity==0) {
+counter++;
+diaporama.changeImage();
+} else {
+setTimeout("diaporama.decreaseOpacity()",50);
+}
+}
+diaporama.changeImage = function() {
+if(counter==imagesTodisplay.length) {
+counter = 0;
+document.getElementById('diapimage').src = imagesTodisplay[counter];
+} else {
+document.getElementById('diapimage').src = imagesTodisplay[counter];
+}
+diaporama.addOpacity()
+}
+diaporama.initialize();
+</script>
+
+</body>
+</html>
+
+

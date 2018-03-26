@@ -1,7 +1,7 @@
 <footer>
-		<div class="container col-lg-12">
+		<div class="container-fluid">
 			<div class="row" style="background-color: #66B2FF;">
-				<div class="col-lg-4 col-md-3 col-sm-4">
+				<div class="col-lg-4">
 				</div>
 
 				<div class="col-lg-4">
