@@ -159,7 +159,7 @@
 			$db = $db->connectToDB();
 			$reservationManager = new ReservationManager($db);
 
-			$connect = $reservationManager->_db->prepare('SELECT * FROM reservationroom WHERE idUser = :id');
+			/*$connect = $reservationManager->_db->prepare('SELECT * FROM reservationroom WHERE idUser = :id');
 
 			$str3 = implode(" ",$_SESSION["connection"]);
 
@@ -171,7 +171,7 @@
 		    <li> <u>id</u>: <?= $c['id'] ?> : <u>idUser</u> : <?= $c['idUser'] ?> : <u>idRoom</u> : <?= $c['idRoom'] ?> : <u>dateStart</u> : <?= $c['dateStart'] ?> : <u>dateEnd</u> : <?= $c['dateEnd'] ?> <br><br>
 	         
 	               </li>
-	                <?php } ?>
+	                <?php } */?>
 				
 			<!--<script src="../js/user_reservation.js"></script>-->
 

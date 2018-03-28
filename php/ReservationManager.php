@@ -35,19 +35,38 @@
 		}*/
 
 		public function addReservation(Reservation $reservation){
-			$connect = $this->_db->prepare('INSERT INTO reservationroom(dateR, dateStart, dateEnd, idRoom, idUser) VALUES(:dateR ,:dateStart, :dateEnd, :idRoom, :idUser)');
+			$connect = $this->_db->prepare('INSERT INTO reservationroom(dateR, dateStart, dateEnd, idRoom) VALUES(:dateR ,:dateStart, :dateEnd, :idRoom)');
 
-			$str1 = implode(" ",$_SESSION["connection"]);
-
-			$str2 = explode(" ", $str1);		
+				
 			$connect->bindValue(':dateR', $reservation->getDateR(), PDO::PARAM_STR);
 			$connect->bindValue(':dateStart', $reservation->getDateStart(), PDO::PARAM_STR);
 			$connect->bindValue(':dateEnd', $reservation->getDateEnd(), PDO::PARAM_STR);
 			$connect->bindValue(':idRoom', $reservation->getIdRoom(), PDO::PARAM_INT);
-			$connect->bindValue(':idUser', intval($str2[0]), PDO::PARAM_INT);
+			
 			
 			$connect->execute();
 
+
+		}
+
+		
+		public function makeReservation(){
+			$connect = $this->_db->prepare('INSERT INTO makereservation(idUser, idReservation) VALUES(:idUser, :idReservation)');
+
+
+			$str1 = implode(" ",$_SESSION["connection"]);
+
+			$str2 = explode(" ", $str1);
+
+			/*$str3 = implode(" ", $postid);
+
+			$str4 = explode(" ", $str3);*/
+			//echo $_POST["id"];
+
+			$connect->bindValue(':idUser', intval($str2[0]), PDO::PARAM_INT);
+			$connect->bindValue(':idReservation', intval($_POST["id"]), PDO::PARAM_INT);
+
+			$connect->execute();
 
 		}
 
@@ -56,14 +75,42 @@
 			$connect->execute([":id"=>$reservation->getId()]);
 		}
 
-		/*public function getReservation($idUser){
+		
+		public function loadId(){
+			$connect = $this->_db->prepare('SELECT id FROM reservationroom ORDER BY id DESC LIMIT 1 ');
+			$connect->execute();
+
+			$_POST["id"] = NULL;
+
+			$result = $connect->fetch();
+			if(empty($result)){
+				echo $result[0];
+				echo "bienvenue dans null";
+				return $_POST["id"] = NULL;
+			} 
+			$str = implode(" ",$result);
+
+			$str2 = explode(" ", $str);
+
+			//return id of room in int format
+
+			//echo (intval($str2[1]));
+			return $_POST["id"] =  intval($str2[0]);
+
+
+
+
+		}
+
+
+		public function getReservation($idUser){
 			$id = (int)$id;
-			$connect = $this->_db->prepare('SELECT * FROM reservationroom WHERE idUser = :idUser');
+			$connect = $this->_db->prepare('SELECT id FROM reservationroom WHERE idUser = :idUser AND ');
 			$connect->execute([":idUser"=>$idUser]);
 			$data = $connect->fetch(PDO::FETCH_ASSOC);
 
 			return new Reservation($data);
-		}*/
+		}
 
 		/*public function getList(){
 			$Reservations = [];

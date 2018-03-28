@@ -154,6 +154,8 @@
 			}
 		}
 
+
+
 		//if there are errors , print them in the webpage
 		if($error){
 			$_SESSION["errors_form"] = $listOfError;
@@ -176,6 +178,10 @@
 			
 
 			$reservationManager->addReservation($reservation);
+			$idOfReserv = $reservationManager->loadId();
+			$reservationManager->makeReservation();
+
+
 			
 
 		}
