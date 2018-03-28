@@ -1,0 +1,29 @@
+
+This is how to install font in Windows or Mac.
+
+Windows 
+
+- Unzip folder/font file. 
+- Select font you want to install, right click then select install.
+
+
+Mac
+
+- First, You need to close any open applications.
+
+Install using Font Book:
+
+- Double click to unzip font file.
+- Select font you want to install.
+- Open in fontbook, then click intall font. 
+
+
+-----------
+
+This font only demo and for personal use only. 
+To purchase full version with a commercial license.
+Please visit my shop at https://creativemarket.com/jozgandoz
+
+Thanks,
+
+Joz Gandoz

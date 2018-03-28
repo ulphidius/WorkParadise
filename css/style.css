@@ -1,0 +1,83 @@
+table
+{
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+}
+
+.title1{
+color: white; 
+margin-top: 20px;
+
+}
+
+.title2{
+color: black; 
+font-weight: bold; 
+font-size: 18px;
+text-align: center;
+
+}
+
+.text_connection{
+	color: white;
+	font-size: 18px;
+}
+
+.button_text1{
+	color: white;
+}
+
+
+
+.button_header{
+	width: 140px;
+	height: 40px;
+	background: #333333;
+	
+}
+
+.button_header:hover{
+	background: green;
+}
+
+.social{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+}
+
+.imgBodyAccueil{
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+
+.page-header{
+	background-color: #66B2FF;
+	position : fixed;
+	width: 100%;
+	z-index: 1;
+	margin-top: 0;
+	top : 0;
+}
+
+.page-footer{
+	background-color: #66B2FF;
+	margin-top: 20%;
+	min-height: 200px;
+
+}
+
+#main{
+	margin-top: 250px;
+}
+
+
+
+
+
+
+	
