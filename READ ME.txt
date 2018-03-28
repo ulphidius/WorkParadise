@@ -1,4 +1,0 @@
-STATUS : Alpha Version 
-*You'll need to select only the important things in the bootstrap folder before putting the files online. 
-*You have to put all the css actions in style.css, there a lot of margin done in others pages
-*You 'll need to link your pages with the header, footer and the "accueil" pages.
