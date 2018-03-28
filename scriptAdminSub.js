@@ -1,4 +1,4 @@
-function verifForm(id){
+function verifFormSub(id){
 	var name = document.getElementById("inputName"+id);
 	var description = document.getElementById("inputDescription"+id);
 	var hourRate = document.getElementById("inputHourRate"+id);
@@ -72,25 +72,23 @@ function verifForm(id){
 	
 	}else{
 
-		var xhr = getXMLHttpRequest();
+		if (  confirm("Voulez-vous vraiment modifier cet abonnement ?")  )
+		{
+			console.log('ok');
 
-		xhr.open("POST", "request.php", true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("id=" + id + "&name=" + name.value + "&description=" + description.value + "&hourRate=" + hourRate.value + "&dayRate=" + dayRate.value + "&studentRate=" + studentRate.value + "&engagementRate=" + engagementRate.value + "&notEngagementRate=" + notEngagementRate.value + "&engagementTime=" + engagementTime.value);
+			var xhr = getXMLHttpRequest();
 
-/*		$.ajax({
-			url : 'requête.php',
-			type : 'POST',
-			data : 'id=' + id + '&description=' + description + 'hourRate=' + hourRate + '&dayRate=' + dayRate + 'studentRate=' + studentRate + '&engagementRate=' + engagementRate + 'notEngagementRate=' + notEngagementRate + '&engagementTime=' + engagementTime,
-			datatype : 'html',
-			success : function(){
-				alert("success");
-			},
+			xhr.open("POST", "requestAdminSub.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("id=" + id + "&name=" + name.value + "&description=" + description.value + "&hourRate=" + hourRate.value + "&dayRate=" + dayRate.value + "&studentRate=" + studentRate.value + "&engagementRate=" + engagementRate.value + "&notEngagementRate=" + notEngagementRate.value + "&engagementTime=" + engagementTime.value);
 
-			error : function(){
-				alert("error");
-			}
-		});*/
+
+			document.location.href="./adminSubscription.php";
+
+		}else{
+			console.log('nok');
+		}
+
 
 	}	
 

@@ -1,6 +1,6 @@
 <?php
 session_start();  
-include('utilities_functions.php');
+include('./utilities_functions.php');
 
 $db = connectDb();
 

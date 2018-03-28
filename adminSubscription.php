@@ -64,11 +64,11 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-    </nav>
+    </nav>*
 
 
     <main role="main" class="container">
-
+      <a href="administration.php" class="btn btn-outline-info">Cancel</a>
       <div class="starter-template">
 
 
@@ -119,7 +119,7 @@
                       </div>
                     </div>
 
-                    <button type="button" onclick="verifForm('.$abonnement['id'].')" class="btn btn-outline-danger">Modify</button>
+                    <button type="button" onclick="verifFormSub('.$abonnement['id'].')" class="btn btn-outline-danger">Modify</button>
                   </form>
                   <br/><br/><br/><br/>
                 ';
@@ -169,7 +169,7 @@
             </div>
           </div>
 
-          <button type="button" onclick="verifForm(0)" class="btn btn-outline-info">Add Engagement</button>
+          <button type="button" onclick="verifFormSub(0)" class="btn btn-outline-info">Add Engagement</button>
         </form>
 
       </div>
@@ -183,6 +183,6 @@
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="scriptAdminSub.js"></script>
   </body>
 </html>
